@@ -1,5 +1,5 @@
 
-var nestedLog = function (functionName, res) {
+var nestedLog = function (functionName, result) {
   var functionNameToDisplay = functionName ? functionName : 'anyonamous function'
   console.group(functionNameToDisplay);
   console.log(result);
