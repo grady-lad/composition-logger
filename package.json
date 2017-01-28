@@ -1,0 +1,11 @@
+{
+  "name": "composition-logger",
+  "version": "0.0.1",
+  "description": "browser first utility tool for logging functional compositions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+  },
+  "author": "mogrady",
+  "license": "ISC",
+}
