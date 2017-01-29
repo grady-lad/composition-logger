@@ -36,7 +36,7 @@ const logByType = (type, functionName = 'anyonamous function', result) => {
   }
 };
 
-module.export = function(...args) {
+module.exports = function(...args) {
   const fns = args;
   logByType('startGroup');
   function f(result) {

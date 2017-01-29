@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "description": "browser first utility tool for logging functional compositions",
   "main": "distribution/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/grady-lad/composition-logger.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel src --presets babel-preset-es2015 --out-dir distribution",
@@ -10,6 +14,16 @@
   },
   "author": "Martin O'Grady (https://github.com/grady-lad)",
   "license": "ISC",
+  "keywords": [
+    "functional",
+    "composition",
+    "debugging",
+    "logging",
+    "fp",
+    "console",
+    "log",
+    "group"
+  ],
   "devDependencies": {
     "babel-cli": "^6.22.2",
     "babel-eslint": "^7.1.1",
