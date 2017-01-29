@@ -1,0 +1,51 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "mocha": true
+  },
+  "parser": "babel-eslint",
+  "rules": {
+    "import/default": 0,
+    "import/no-duplicates": 0,
+    "import/named": 0,
+    "import/namespace": 0,
+    "import/no-unresolved": 0,
+    "import/no-named-as-default": 0,
+    "jsx-quotes": 2,
+    "comma-dangle": 0,  // not sure why airbnb turned this on. gross! //It Was added because it give you a more clear diff when something is added to a list
+    "indent": [2, 2, {"SwitchCase": 1}],
+    "no-console": 0,
+    "no-use-before-define": 0,
+    "no-alert": 0,
+    "spaced-comment": 0,
+    "object-curly-spacing": 0,
+    "max-len": [1, 150, 2],
+    "prefer-template": 1,
+    "quote-props": 0,
+    "camelcase": 1,
+    "arrow-body-style": 0,
+    "id-length": 0,
+    "no-else-return": 0,
+    "no-unneeded-ternary": 0,
+    "no-case-declarations": 0,
+    "global-require": 0,
+    "no-debugger": 1,
+    "no-restricted-syntax": 1,
+    //Added related to https://github.com/eslint/eslint/issues/6274
+    "generator-star-spacing": 0,
+  },
+  "settings": {
+    "import/parser": "babel-eslint",
+    "import/resolve": {
+      "moduleDirectory": ["node_modules", "src"]
+    }
+  },
+  "parserOptions": {
+    "ecmaVersion": 7,
+    "ecmaFeatures": {
+      "classes": true,
+      "experimentalObjectRestSpread": true
+    }
+  }
+}

@@ -2,10 +2,18 @@
   "name": "composition-logger",
   "version": "0.0.1",
   "description": "browser first utility tool for logging functional compositions",
-  "main": "index.js",
+  "main": "distribution/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src --presets babel-preset-es2015 --out-dir distribution",
+    "prepublish": "npm run build"
   },
-  "author": "mogrady",
-  "license": "ISC"
+  "author": "Martin O'Grady (https://github.com/grady-lad)",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.22.2",
+    "babel-eslint": "^7.1.1",
+    "babel-preset-es2015": "^6.22.0",
+    "eslint": "^3.14.1"
+  }
 }
