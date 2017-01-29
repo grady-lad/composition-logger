@@ -1,6 +1,6 @@
 {
   "name": "composition-logger",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "browser first utility tool for logging functional compositions",
   "main": "distribution/index.js",
   "repository": {
