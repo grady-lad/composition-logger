@@ -1,15 +1,20 @@
 # Composition Logger
 
-When first working with functional compositions it can be daunting or difficult to understand what is happening between each step of the composition.
+To install (recommended to save as a dev dependency)
+```
+npm install composition-logger --save dev
+```
 
-Sometimes for a developer whos is experienced with functional compositions it can sometimes be a tedious experience debugging or outputting the result after each step within the composition.
+When first working with functional compositions it can be daunting or difficult to visualise the data flow between each step of the composition.
 
-Usually you have some helper function on stand by to help with logging the output of your composition such as:
+Sometimes for developers who are experienced with using functional compositions it can sometimes be a tedious experience debugging or outputting the result after each step within the composition.
+
+Usually a developer may have some helper function on stand by to help with logging the output of a composition, such as:
 
 ```javascript
  export const trace = tag => output => {
   console.log(`--------${tag}---------`, output);
-  return x;
+  return output;
 };
 ```
 By using `console.group` we can view the data that passes through our compositions in a more clearer and understandable format.
@@ -30,16 +35,12 @@ composeWithLogs(
 )([1, 4, 5, 6, 7]);
 ```
 
-By replacing which ever compose function your are using with the compose function provided by this package it would yield the result below, which is basically a `console.group` with nested groups for each function within the composition.
+By replacing which ever compose function you are using with the compose function provided by this module it would yield the result below. Which is basically a `console.group` with nested groups for each function within the composition.
 
-![alt-text](https://s3-eu-west-1.amazonaws.com/composition-logger/composition-logger-output.png)
+![alt-text](https://s3-eu-west-1.amazonaws.com/composition-logger/complogger.png)
 
-## TODOS And Things To Note
-- Node does not support console.group, so I am using a basic `console.log` instead, you should only see this when running the composition logger within a node env, e.g Intial render for sever side rendering.
-
-- If a function within the composition returns another function, currently that function will be displayed as 'anonymous' ideally we could display the name or some how tag that function.
-
-- Maybe implement the ability to pass configurations, such as:
-  - Collapse all nested groups.
-  - Display objects within tables.
-  - Include/exclude functions within the composition.
+## Things To Note
+- This module is focused towards a browser environment as it supports `console.group`
+- Node does not support `console.group`, so a basic `console.log` is used instead, you should only see this when running the composition logger within a node env, e.g Intial render for sever side rendering.
+- This module composes from right to left and will not work with functions such as `flow`.
+- This module focuses on outputting the steps at the root level of a composition. 
