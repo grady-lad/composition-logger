@@ -2,7 +2,7 @@
 
 To install (recommended to save as a dev dependency)
 ```
-npm install composition-logger --save dev
+npm install composition-logger --save -dev
 ```
 
 When first working with functional compositions it can be daunting or difficult to visualise the data flow between each step of the composition.
