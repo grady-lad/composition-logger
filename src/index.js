@@ -67,39 +67,40 @@ const handleError = (err, closeGroup) => {
       closeGroup("groupEnd"); // need to groupEnd to avoid endless nesting when errors occur.
     }
     console.error(err);
-    throw err; // throw the users error.
+    throw new Error(err); // throw the users error.
   }
 };
 
-/**
-Check used to determine whether or not to spread the arguments to a function.
-Only done on the entry function within a compose as it can have multiple arguments.
-**/
-const isFirst = (idx, length) => idx === length - 1;
-
-export default function composeWithLogs(...args) {
-  const fns = args; // fns for our composition.
-  function f(...data) {
-    // Need to spread because many arguments could be passed initially.
+export function pipeWithLogs(...fns) {
+  const length = fns ? fns.length : 0;
+  if (length === 0) {
+    throw new Error("pipe requires at least one function as an argument");
+  }
+  return function(...data) {
+    let index = 0;
+    let pos = 1; // ordinal position of the pipe operation
+    let result;
     logByType("startGroup");
-    const initialArguments = data;
-    let resultToDisplay; // result of a func within the composition to ouput to console.
-    let pos = 1; // used to identify which step in the compose we are on (for display purposes).
     try {
-      for (let i = fns.length - 1; i > -1; i--) {
-        if (isFirst(i, fns.length)) {
-          resultToDisplay = fns[i].call(this, ...initialArguments);
-        } else {
-          resultToDisplay = fns[i].call(this, resultToDisplay);
-        }
-        logByType("logOutput", getOrdinalSuffix(pos), resultToDisplay);
+      result = length ? fns[index].apply(this, data) : data[0];
+      logByType("logOutput", getOrdinalSuffix(pos), result);
+      while (++index < length) {
         pos++;
+        result = fns[index].call(this, result);
+        logByType("logOutput", getOrdinalSuffix(pos), result);
       }
-      logByType("groupEnd");
     } catch (err) {
       handleError(err, logByType);
     }
-    return resultToDisplay;
+    logByType("groupEnd");
+    return result;
+  };
+}
+
+export function composeWithLogs(...fns) {
+  const length = fns ? fns.length : 0;
+  if (length === 0) {
+    throw new Error("compose requires at least one function as an argument");
   }
-  return f;
+  return pipeWithLogs(fns.reverse());
 }

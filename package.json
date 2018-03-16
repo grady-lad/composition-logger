@@ -2,7 +2,9 @@
   "name": "composition-logger",
   "version": "2.0.1",
   "description": "A browser first utility tool for logging each step within a functional composition",
-  "main": "distribution/index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "jsnext:main": "dist/index.es.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/grady-lad/composition-logger.git"
