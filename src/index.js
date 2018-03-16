@@ -6,15 +6,7 @@ const logByType = (type, outputPos, result) => {
       if (canCallGroup) {
         console.group("Composition Output \n");
       } else {
-        console.log("------------- Compostion Output ---------------------");
-      }
-      return;
-    }
-    case "startNestedGroup": {
-      if (canCallGroup) {
-        console.groupCollapsed(`${outputPos} output`);
-      } else {
-        console.log(`------------- ${outputPos} output ---------------------`);
+        console.log("--- Compostion Output ---");
       }
       return;
     }
@@ -24,11 +16,9 @@ const logByType = (type, outputPos, result) => {
         console.log(result);
         console.groupEnd();
       } else {
-        console.log(`-------------${outputPos} output ---------------------`);
+        console.log(`--- ${outputPos} output ----`);
         console.log(result);
-        console.log(
-          "-----------------------------------------------------------"
-        );
+        console.log("-------------------------");
       }
       return;
     }
@@ -36,7 +26,7 @@ const logByType = (type, outputPos, result) => {
       if (canCallGroup) {
         console.groupEnd();
       } else {
-        console.log("------------- Compostion End ---------------------");
+        console.log("--- Compostion End ---");
       }
       return;
     }
