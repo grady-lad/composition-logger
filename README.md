@@ -8,7 +8,7 @@ To install ( _recommended to save as a dev dependency_ )
 
 `npm install composition-logger --save -dev`
 
-### What is this
+### What is this?
 
 From all the resources that I have seen, the recommended way to debug functional compositions in javascript is to provide a function that produces a side effect such as logging to the conosle and continue to pass the data through the composition, such as the trace function below.
 
@@ -32,4 +32,4 @@ Composition-logger supports two ways of composing functions, which are [pipe](ht
 
 #### Compose
 
-![composition-logger-compose](media/composeExample.png)
+![composition-logger-compose](media/carbon.png)
