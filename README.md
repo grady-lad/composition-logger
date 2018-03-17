@@ -32,7 +32,12 @@ Composition-logger supports two ways of composing functions, which are [pipe](ht
 
 #### Compose
 
-<p float="left">
-  <img src="/media/carbon.png" width="100" />
-  <img src="/media/compositionOutput.png" width="100" />
-</p>
+<div align="center">
+  <img src="media/carbon.png" width="500" />
+</div>
+            
+##### Composition-logger output
+
+<div align="center">
+  <img src="media/compositionOutput.png" width="500" />
+</div>
