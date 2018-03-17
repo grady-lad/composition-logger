@@ -10,13 +10,13 @@ To install ( _recommended to save as a dev dependency_ )
 
 ### What is this?
 
-From all the resources that I have seen, the recommended way to debug functional compositions in JavaScript is to provide a function that produces a side effect such as logging to the console and continue to pass the data through the composition, such as the trace function below.
+From all the resources that I have seen, the recommended way to debug functional compositions in JavaScript is to provide a function that produces a side effect such as logging to the console and continue to pass the data through the composition, such as [ramdas tap function](http://ramdajs.com/docs/#tap).
 
 This is all well and good but it poses a few limitations such as:
 
 * Not beginner friendly. Beginners need to understand how functional composition works in order to debug or gain insight in how the data flows through a composition.
 
-* Debugging methods such as `trace` can be tedious to work with. Let's say your composition contains a bug, in order to view the data between each step of the compositon, you would be required to manually add the `trace` function between each step of the composition.
+* Debugging methods such as `tap` can be tedious to work with. Let's say your composition contains a bug, in order to view the data between each step of the compositon, you would be required to manually add the `tap` function between each step of the composition.
 
 So how can we do better? By utilising [console.group](https://developer.mozilla.org/en-US/docs/Web/API/Console/group) and this is exactly what composition-logger does.
 
