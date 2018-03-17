@@ -28,8 +28,8 @@ Composition-logger supports two ways of composing functions, which are [pipe](ht
 
 #### Pipe
 
-[![composition-logger-pipe](media/pipeExample.png)]
+![composition-logger-pipe](media/pipeExample.png)
 
 #### Compose
 
-[![composition-logger-compose](media/composeExample.png)]
+![composition-logger-compose](media/composeExample.png)
