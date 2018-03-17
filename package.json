@@ -1,7 +1,8 @@
 {
   "name": "composition-logger",
-  "version": "2.0.1",
-  "description": "A browser first utility tool for logging each step within a functional composition",
+  "version": "3.0.0",
+  "description":
+    "The most optimal way to visualize/debug functional compositions",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
@@ -18,7 +19,8 @@
     "prepush": "npm run test"
   },
   "author": "Martin O'Grady (https://github.com/grady-lad)",
-  "license": "ISC",
+  "license": "MIT",
+  "homepage": "https://github.com/grady-lad/composition-logger.git",
   "keywords": [
     "functional",
     "composition",
@@ -29,15 +31,14 @@
     "log",
     "group"
   ],
+  "bugs": {
+    "url": "https://github.com/grady-lad/composition-logger/issues"
+  },
   "jest": {
     "testRegex": "__tests__/.*\\.test\\.js$"
   },
   "lint-staged": {
-    "*.js": [
-      "eslint",
-      "prettier-eslint --write",
-      "git add"
-    ]
+    "*.js": ["eslint", "prettier-eslint --write", "git add"]
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
