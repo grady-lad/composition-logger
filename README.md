@@ -28,7 +28,7 @@ composition-logger exposes two functions:
 
 * `pipeWithLogs`: Compose from left to right [see pipe](http://ramdajs.com/docs/#pipe)
 
-* `composeWithLogs`: Compose from left to right [see compose](http://ramdajs.com/docs/#compose)
+* `composeWithLogs`: Compose from right to left [see compose](http://ramdajs.com/docs/#compose)
 
 #### Pipe
 
@@ -48,6 +48,10 @@ performCalculation([1, 4, 5, 6, 7]);
 
 The above example will log the following to the browser:
 
+<div align="left">
+  <img src="media/compositionOutput.png" width="700" />
+</div>
+
 #### Compose
 
 ```javascript
@@ -64,4 +68,8 @@ const performCalculation = composeWithLogs(divideByTwo, sum, addOne);
 performCalculation([1, 4, 5, 6, 7]);
 ```
 
-The above example will log the following to the browser:
+The above example will log the following to the browser
+
+<div align="left">
+  <img src="media/compositionOutput.png" width="700" />
+</div>
