@@ -1,46 +1,75 @@
 # Composition Logger
 
-To install (recommended to save as a dev dependency)
-```
-npm install composition-logger --save -dev
-```
+## [![composition-logger](media/logo.png)](https://github.com/grady-lad/composition-logger)
 
-When first working with functional compositions it can be daunting or difficult to visualise the data flow between each step of the composition.
+### Installation
 
-Sometimes for developers who are experienced with using functional compositions it can sometimes be a tedious experience debugging or outputting the result after each step within the composition.
+To install ( _recommended to save as a dev dependency_ )
 
-Usually a developer may have some helper function on stand by to help with logging the output of a composition, such as:
+`npm install composition-logger --save -dev`
+
+### What is this?
+
+From all the resources that I have seen, the recommended way to debug functional compositions in javascript is to provide a function that produces a side effect such as logging to the conosle and continue to pass the data through the composition, such as the trace function below.
+
+This is all well and good but it poses a few limitations such as:
+
+* Not beginner friendly. Beginners need to understand how functional composition works in order to debug or gain insight in how the data flows through a composition.
+
+* Debugging methods such as `trace` can be tedious to work with. Lets say your composition contains a bug, in order to view the data between each step of the compositon, you would be required to manually add the `trace` function between each step of the composition.
+
+So how can we do better? By utilizing [console.group](https://developer.mozilla.org/en-US/docs/Web/API/Console/group) and this is exactly what composition-logger does.
+
+composition-logger logs each step of your composition in an organized manner without interuptting the data flow of your composition, making it effortless to debug and giving you continous insight into your functional compositions.
+
+### Usage
+
+composition-logger exposes two functions:
+
+* `pipeWithLogs`: Compose from left to right [see pipe](http://ramdajs.com/docs/#pipe)
+
+* `composeWithLogs`: Compose from right to left [see compose](http://ramdajs.com/docs/#compose)
+
+#### Pipe
 
 ```javascript
- export const trace = tag => output => {
-  console.log(`--------${tag}---------`, output);
-  return output;
-};
-```
-By using `console.group` we can view the data that passes through our compositions in a more clearer and understandable format.
-
-Consider the following example
-
-```javascript
-import composeWithLogs from 'composition-logger';
+import { pipeWithLogs } from "composition-logger";
 
 const divideByTwo = data => data / 2;
+
 const sum = data => data.reduce((a, b) => a + b);
-const addOne = data => data + 1;
-const map = f => arr => arr.map(f);
-composeWithLogs(
-  divideByTwo,
-  sum,
-  map(addOne)
-)([1, 4, 5, 6, 7]);
+
+const addOne = data => data.map(item => item + 1);
+
+const performCalculation = pipeWithLogs(addOne, sum, divideByTwo);
+
+performCalculation([1, 4, 5, 6, 7]);
 ```
 
-By replacing which ever compose function you are using with the compose function provided by this module it would yield the result below. Which is basically a `console.group` with nested groups for each function within the composition.
+The above example will log the following to the browser:
 
-![alt-text](https://s3-eu-west-1.amazonaws.com/composition-logger/complogger.png)
+<div align="left">
+  <img src="media/compositionOutput.png" width="700" />
+</div>
 
-## Things To Note
-- This module is focused towards a browser environment as it supports `console.group`
-- Node does not support `console.group`, so a basic `console.log` is used instead, you should only see this when running the composition logger within a node env, e.g Intial render for sever side rendering.
-- This module composes from right to left and will not work with functions such as `flow`.
-- This module focuses on outputting the steps at the root level of a composition. 
+#### Compose
+
+```javascript
+import { composeWithLogs } from "composition-logger";
+
+const divideByTwo = data => data / 2;
+
+const sum = data => data.reduce((a, b) => a + b);
+
+const addOne = data => data.map(item => item + 1);
+
+const performCalculation = composeWithLogs(divideByTwo, sum, addOne);
+
+performCalculation([1, 4, 5, 6, 7]);
+```
+
+The above example will log the following to the browser
+
+<div align="left">
+  <img src="media/compositionOutput.png" width="700" />
+</div>
