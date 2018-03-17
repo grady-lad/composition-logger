@@ -24,12 +24,44 @@ composition-logger logs each step of your composition in an organized manner wit
 
 ### Usage
 
-Composition-logger supports two ways of composing functions, which are [pipe](http://ramdajs.com/docs/#pipe) & [compose](http://ramdajs.com/docs/#compose)
+composition-logger exposes two functions:
+
+* `pipeWithLogs`: Compose from left to right [see pipe](http://ramdajs.com/docs/#pipe)
+
+* `composeWithLogs`: Compose from left to right [see compose](http://ramdajs.com/docs/#compose)
 
 #### Pipe
 
-![composition-logger-pipe](media/pipeExample.png)
+```javascript
+import { pipeWithLogs } from "composition-logger";
+
+const divideByTwo = data => data / 2;
+
+const sum = data => data.reduce((a, b) => a + b);
+
+const addOne = data => data.map(item => item + 1);
+
+const performCalculation = pipeWithLogs(addOne, sum, divideByTwo);
+
+performCalculation([1, 4, 5, 6, 7]);
+```
+
+The above example will log the following to the browser:
 
 #### Compose
 
-![composition-logger-pipe](media/composeExample.png)
+```javascript
+import { composeWithLogs } from "composition-logger";
+
+const divideByTwo = data => data / 2;
+
+const sum = data => data.reduce((a, b) => a + b);
+
+const addOne = data => data.map(item => item + 1);
+
+const performCalculation = composeWithLogs(divideByTwo, sum, addOne);
+
+performCalculation([1, 4, 5, 6, 7]);
+```
+
+The above example will log the following to the browser:
