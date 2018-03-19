@@ -1,7 +1,8 @@
 {
   "name": "composition-logger",
-  "version": "3.0.0",
-  "description": "The most optimal way to visualize/debug functional compositions",
+  "version": "4.0.0",
+  "description":
+    "The most optimal way to visualize/debug functional compositions",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
@@ -37,11 +38,7 @@
     "testRegex": "__tests__/.*\\.test\\.js$"
   },
   "lint-staged": {
-    "*.js": [
-      "eslint",
-      "prettier-eslint --write",
-      "git add"
-    ]
+    "*.js": ["eslint", "prettier-eslint --write", "git add"]
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
