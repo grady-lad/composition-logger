@@ -92,5 +92,5 @@ export function composeWithLogs(...fns) {
   if (length === 0) {
     throw new Error("compose requires at least one function as an argument");
   }
-  return pipeWithLogs(fns.reverse());
+  return pipeWithLogs.apply(this, fns.reverse());
 }
